@@ -1,6 +1,14 @@
 <?php
 
-use App\Http\Controllers\AuthManager;
+use App\Livewire\ContactUs;
+use App\Livewire\ShowAboutUs;
+use App\Livewire\ShowElectricity;
+use App\Livewire\ShowHome;
+use App\Livewire\ShowNews;
+use App\Livewire\ShowServices;
+use App\Livewire\ShowSurvey;
+use App\Livewire\ShowWard;
+use App\Livewire\ShowWater;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +22,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name(   'home');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/login', [AuthManager::class,'login'])->name('login');
-Route::post('/login', [AuthManager::class,'loginPost'])->name('login.post');
-
-Route::get('/register', [AuthManager::class,'register'])->name( 'register');
-Route::post('/register', [AuthManager::class,'registerPost'])->name('register.post');
-Route::get('/logout', [AuthManager::class,'logout'])->name('logout');
+Route::get('/', ShowHome::class)->name('home');
+Route::get('/about', ShowAboutUs::class)->name('about-us');
+Route::get('/services', ShowServices::class)->name('services');
+Route::get('/contact', ContactUs::class)->name('contact');
+Route::get('/water', ShowWater::class)->name('water');
+Route::get('/electricity', ShowElectricity::class)->name('electricity');
+Route::get('/survey', ShowSurvey::class)->name('survey');
+Route::get('/ward', ShowWard::class)->name('ward');
+Route::get('/news', ShowNews::class)->name('news');
